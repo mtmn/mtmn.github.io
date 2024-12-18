@@ -1,0 +1,46 @@
+.button,button {
+  color:var(--button-text,#000000);
+  background-color:var(--button-background,transparent);
+	border:var(--button-border,none);
+	transition:filter 0.2s ease,transform 0.2s ease;
+}
+
+.button:hover,button:hover {
+	filter:brightness(90%);
+	transform:translateY(-1px);
+}
+
+.icon {
+	filter:var(--icon-filter,none);
+}
+
+.button.button-default {
+	--button-text:#ffffff;
+	--button-background:#2457F5;
+	--button-border:1px solid #ffffff;
+}
+
+.button-email {
+	--button-text:#ffffff;
+	--button-background:#36454F;
+}
+
+.button-ghost {
+	--button-text:#eeeeee;
+	--button-background:#01242e;
+}
+
+.button-punctum {
+	--button-text:#6c6b6b;
+	--button-background:#292727;
+}
+
+.button-soundcloud {
+	--button-text:#ffffff;
+	--button-background:#ff5500;
+}
+
+.button-bandcamp {
+	--button-text:#ffffff;
+	--button-background:#1d9fc3;
+}
