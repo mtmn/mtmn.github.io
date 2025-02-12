@@ -28,7 +28,7 @@
 	filter:var(--icon-filter,none);
 }
 
-.button-email {
+.button-mail {
 	--button-text:#eeeeee;
 	--button-background:#36454F;
 }
