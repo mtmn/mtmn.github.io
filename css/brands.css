@@ -28,15 +28,6 @@
 	filter:var(--icon-filter,none);
 }
 
-/* Brand-Specific Styles
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-.button.button-default {
-	--button-text:#ffffff;
-	--button-background:#2457F5;
-	--button-border:1px solid #ffffff;
-}
-
 .button-email {
 	--button-text:#eeeeee;
 	--button-background:#36454F;
@@ -49,7 +40,7 @@
 
 .button-punctum {
 	--button-text:#eeeeee;
-	--button-background:#01242e;
+	--button-background:#648c74;
 }
 
 .button-soundcloud {
