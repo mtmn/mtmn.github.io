@@ -21,7 +21,7 @@
 }
 
 .button-email {
-	--button-text:#ffffff;
+	--button-text:#eeeeee;
 	--button-background:#36454F;
 }
 
@@ -32,15 +32,15 @@
 
 .button-punctum {
 	--button-text:#6c6b6b;
-	--button-background:#292727;
+	--button-background:#a1f4c8;
 }
 
 .button-soundcloud {
-	--button-text:#ffffff;
+	--button-text:#eeeeee;
 	--button-background:#ff5500;
 }
 
 .button-bandcamp {
-	--button-text:#ffffff;
+	--button-text:#eeeeee;
 	--button-background:#1d9fc3;
 }
