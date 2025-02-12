@@ -1,16 +1,9 @@
-/*
-* LittleLink Reset
-* A minimal CSS reset for LittleLink
-*/
-
-/* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin */
 body,
 h1,
 h2,
@@ -24,7 +17,6 @@ dd {
   margin: 0;
 }
 
-/* Remove list styles on ul, ol elements */
 ul,
 ol {
   list-style: none;
@@ -32,12 +24,10 @@ ol {
   padding: 0;
 }
 
-/* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
@@ -45,14 +35,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -60,7 +48,6 @@ select {
   font: inherit;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
@@ -75,7 +62,6 @@ select {
   }
 }
 
-/* Modern focus styles */
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -85,7 +71,6 @@ select {
   outline-offset: 2px;
 }
 
-/* Remove touch callout on iOS */
 a {
   -webkit-touch-callout: none;
 }
