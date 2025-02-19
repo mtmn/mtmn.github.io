@@ -57,3 +57,8 @@
 	--button-text:#eeeeee;
 	--button-background:#e02b71;
 }
+
+.button-substack {
+	--button-text:#ffffff;
+	--button-background:#FF6719;
+}
