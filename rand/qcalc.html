@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qCalculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+        }
+        .results h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #e6ffe6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>qCalculator</h1>
+        
+        <div class="input-group">
+            <label for="target-bpm">Target BPM (with decimal):</label>
+            <input type="number" id="target-bpm" step="0.01" placeholder="e.g. 124.8">
+        </div>
+        
+        <div class="input-group">
+            <label for="tempo-range">Tempo Range:</label>
+            <select id="tempo-range">
+                <option value="6">±6%</option>
+                <option value="10">±10%</option>
+                <option value="16">±16%</option>
+            </select>
+        </div>
+        
+        <button onclick="calculateBPM()">Calculate</button>
+        
+        <div id="results" class="results" style="display: none;">
+            <h3>Results</h3>
+            <div id="results-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateBPM() {
+            // Get input values
+            const targetBPM = parseFloat(document.getElementById('target-bpm').value);
+            const tempoRange = parseInt(document.getElementById('tempo-range').value);
+            
+            // Validate input
+            if (isNaN(targetBPM) || targetBPM <= 0) {
+                alert('Please enter a valid BPM value');
+                return;
+            }
+            
+            // Calculate the base BPM range
+            const minBaseRange = targetBPM / (1 + (tempoRange / 100));
+            const maxBaseRange = targetBPM / (1 - (tempoRange / 100));
+            
+            // Find all possible base BPMs (whole numbers shown on CDJ)
+            const possibleBaseBPMs = [];
+            const startBPM = Math.floor(minBaseRange);
+            const endBPM = Math.ceil(maxBaseRange);
+            
+            for (let baseBPM = startBPM; baseBPM <= endBPM; baseBPM++) {
+                // Calculate min and max BPM with this base and tempo range
+                const minPossibleBPM = baseBPM * (1 - (tempoRange / 100));
+                const maxPossibleBPM = baseBPM * (1 + (tempoRange / 100));
+                
+                // Check if target BPM is within range
+                if (targetBPM >= minPossibleBPM && targetBPM <= maxPossibleBPM) {
+                    // Calculate required tempo percentage
+                    const requiredTempo = ((targetBPM / baseBPM) - 1) * 100;
+                    possibleBaseBPMs.push({
+                        baseBPM: baseBPM,
+                        tempo: requiredTempo.toFixed(2),
+                        actualBPM: (baseBPM * (1 + (requiredTempo / 100))).toFixed(2)
+                    });
+                }
+            }
+            
+            // Display results
+            const resultsDiv = document.getElementById('results');
+            const resultsContent = document.getElementById('results-content');
+            
+            if (possibleBaseBPMs.length === 0) {
+                resultsContent.innerHTML = `<p>No possible base BPM found for ${targetBPM} with ±${tempoRange}% range.</p>`;
+            } else {
+                // Build results table
+                let tableHTML = `
+                    <p>Results for target BPM ${targetBPM} with ±${tempoRange}% range:</p>
+                    <table>
+                        <tr>
+                            <th>Base BPM (CDJ Display)</th>
+                            <th>Required Tempo (%)</th>
+                            <th>Resulting BPM</th>
+                        </tr>
+                `;
+                
+                possibleBaseBPMs.forEach(result => {
+                    // Find the option with tempo closest to 0
+                    const closest = possibleBaseBPMs.reduce((prev, curr) => 
+                        Math.abs(parseFloat(curr.tempo)) < Math.abs(parseFloat(prev.tempo)) ? curr : prev
+                    );
+                    
+                    // Add highlight class if this is the closest to 0%
+                    const highlightClass = result.baseBPM === closest.baseBPM ? 'highlight' : '';
+                    
+                    tableHTML += `
+                        <tr class="${highlightClass}">
+                            <td>${result.baseBPM}</td>
+                            <td>${result.tempo}%</td>
+                            <td>${result.actualBPM}</td>
+                        </tr>
+                    `;
+                });
+                
+                tableHTML += `</table>
+                <p><strong>Note:</strong> The highlighted row shows the setting with the least tempo adjustment.</p>`;
+                
+                resultsContent.innerHTML = tableHTML;
+            }
+            
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
