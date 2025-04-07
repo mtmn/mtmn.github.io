@@ -67,7 +67,7 @@
 	padding:0;
 	background-color:#ffffff;
 	color:#1a1a1a;
-	font-family:"sans-serif",system-ui;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size:1.125rem;     				/* 18px */
     font-weight:400;
 	line-height:1.6;
@@ -350,7 +350,7 @@ ul li {
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 @font-face {
 	font-display:swap;
-	font-family:'sans-serif';
+	font-family: Arial, Helvetica, sans-serif;
 	font-style:normal;
 	font-weight:400;
 	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot');
@@ -358,7 +358,7 @@ ul li {
 }
 @font-face {
 	font-display:swap;
-	font-family:'sans-serif';
+	font-family: Arial, Helvetica, sans-serif;
 	font-style:normal;
 	font-weight:600;
 	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.eot');
@@ -366,7 +366,7 @@ ul li {
 }
 @font-face {
 	font-display:swap;
-	font-family:'sans-serif';
+	font-family: Arial, Helvetica, sans-serif;
 	font-style:normal;
 	font-weight:700;
 	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-700.eot');
@@ -374,7 +374,7 @@ ul li {
 }
 @font-face {
 	font-display:swap;
-	font-family:'sans-serif';
+	font-family: Arial, Helvetica, sans-serif;
 	font-style:normal;
 	font-weight:800;
 	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.eot');
