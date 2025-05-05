@@ -30,7 +30,7 @@
 
 .button-email {
 	--button-text:#eeeeee;
-	--button-background:#36454F;
+	--button-background:#c76c33;
 }
 
 .button-ghost {
@@ -64,6 +64,6 @@
 }
 
 .button-fediverse {
-	--button-text:#748b9b;
-	--button-background:#FF6719;
+	--button-text:#eeeeee;
+	--button-background:#615df6;
 }
