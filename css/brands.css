@@ -30,12 +30,7 @@
 
 .button-email {
 	--button-text:#eeeeee;
-	--button-background:#c76c33;
-}
-
-.button-ghost {
-	--button-text:#eeeeee;
-	--button-background:#01242e;
+	--button-background:#36454f;
 }
 
 .button-punctum {
@@ -51,19 +46,4 @@
 .button-bandcamp {
 	--button-text:#eeeeee;
 	--button-background:#146f89;
-}
-
-.button-instagram {
-	--button-text:#eeeeee;
-	--button-background:#e02b71;
-}
-
-.button-substack {
-	--button-text:#ffffff;
-	--button-background:#FF6719;
-}
-
-.button-fediverse {
-	--button-text:#eeeeee;
-	--button-background:#615df6;
 }
